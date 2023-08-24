@@ -8,7 +8,7 @@ import java.util.Date;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservationId;
+    private int reservationId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -39,11 +39,11 @@ public class Reservation {
 		this.isDeleted = isDeleted;
 	}
 
-	public Long getReservationId() {
+	public int getReservationId() {
 		return reservationId;
 	}
 
-	public void setReservationId(Long reservationId) {
+	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}
 
@@ -83,8 +83,8 @@ public class Reservation {
 		return isDeleted;
 	}
 
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setDeleted(boolean date) {
+		this.isDeleted = date;
 	}
 
 	@Override
