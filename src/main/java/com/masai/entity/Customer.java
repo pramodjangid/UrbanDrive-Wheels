@@ -7,11 +7,13 @@ import jakarta.persistence.*;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private int customerId;
     
     private String firstName;
     private String lastName;
     private String email;
+    private String username;
+    private String password;
     private String phoneNumber;
     private String address;
     private boolean isDeleted;
@@ -22,24 +24,26 @@ public class Customer {
 	}
 
 
-	public Customer(String firstName, String lastName, String email, String phoneNumber, String address,
+	public Customer(String firstName, String lastName, String email,String username,String password, String phoneNumber, String address,
 			boolean isDeleted) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.setUsername(username);
+		this.setPassword(password);
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.isDeleted = isDeleted;
 	}
 
 
-	public Long getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
 
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 
@@ -104,10 +108,34 @@ public class Customer {
 	}
 
 
+	
+
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", phoneNumber=" + phoneNumber + ", address=" + address + ", isDeleted=" + isDeleted + "]";
+				+ email + ", username=" + username + ", phoneNumber=" + phoneNumber + ", address=" + address
+				+ ", isDeleted=" + isDeleted + "]";
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
     

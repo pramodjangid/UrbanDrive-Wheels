@@ -7,46 +7,60 @@ import jakarta.persistence.*;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long vehicleId;
+    private int vehicleId;
 
-    private String make;
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "model")
     private String model;
+
+    @Column(name = "year")
     private int year;
-    private String color;
-    private double dailyRate;
-    private String availabilityStatus;
-    private boolean isDeleted;
-    
+
+    @Column(name = "mileage")
+    private double mileage;
+
+    @Column(name = "availability")
+    private boolean availability;
+
+    @Column(name = "seating_capacity")
+    private int seatingCapacity;
+
+    @Column(name = "rental_rate")
+    private double rentalRate;
+
+
 	public Vehicle() {
 		super();
 	}
 
-	public Vehicle(String make, String model, int year, String color, double dailyRate, String availabilityStatus,
-			boolean isDeleted) {
+	public Vehicle(String brand, String model, int year, double mileage, boolean availability, int seatingCapacity,
+			double rentalRate) {
 		super();
-		this.make = make;
+		this.brand = brand;
 		this.model = model;
 		this.year = year;
-		this.color = color;
-		this.dailyRate = dailyRate;
-		this.availabilityStatus = availabilityStatus;
-		this.isDeleted = isDeleted;
+		this.mileage = mileage;
+		this.availability = availability;
+		this.seatingCapacity = seatingCapacity;
+		this.rentalRate = rentalRate;
 	}
 
-	public Long getVehicleId() {
+	public int getVehicleId() {
 		return vehicleId;
 	}
 
-	public void setVehicleId(Long vehicleId) {
+	public void setVehicleId(int vehicleId) {
 		this.vehicleId = vehicleId;
 	}
 
-	public String getMake() {
-		return make;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setMake(String make) {
-		this.make = make;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 
 	public String getModel() {
@@ -65,45 +79,45 @@ public class Vehicle {
 		this.year = year;
 	}
 
-	public String getColor() {
-		return color;
+	public double getMileage() {
+		return mileage;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setMileage(double mileage) {
+		this.mileage = mileage;
 	}
 
-	public double getDailyRate() {
-		return dailyRate;
+	public boolean isAvailability() {
+		return availability;
 	}
 
-	public void setDailyRate(double dailyRate) {
-		this.dailyRate = dailyRate;
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
 	}
 
-	public String getAvailabilityStatus() {
-		return availabilityStatus;
+	public int getSeatingCapacity() {
+		return seatingCapacity;
 	}
 
-	public void setAvailabilityStatus(String availabilityStatus) {
-		this.availabilityStatus = availabilityStatus;
+	public void setSeatingCapacity(int seatingCapacity) {
+		this.seatingCapacity = seatingCapacity;
 	}
 
-	public boolean isDeleted() {
-		return isDeleted;
+	public double getRentalRate() {
+		return rentalRate;
 	}
 
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setRentalRate(double rentalRate) {
+		this.rentalRate = rentalRate;
 	}
 
 	@Override
 	public String toString() {
-		return "Vehicle [vehicleId=" + vehicleId + ", make=" + make + ", model=" + model + ", year=" + year + ", color="
-				+ color + ", dailyRate=" + dailyRate + ", availabilityStatus=" + availabilityStatus + ", isDeleted="
-				+ isDeleted + "]";
+		return "Vehicle [vehicleId=" + vehicleId + ", brand=" + brand + ", model=" + model + ", year=" + year
+				+ ", mileage=" + mileage + ", availability=" + availability + ", seatingCapacity=" + seatingCapacity
+				+ ", rentalRate=" + rentalRate + "]";
 	}
 
     
+    
 }
-
