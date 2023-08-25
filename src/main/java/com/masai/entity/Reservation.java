@@ -1,14 +1,16 @@
 package com.masai.entity;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "reservations")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reservationId;
+    private int reservationId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -19,10 +21,10 @@ public class Reservation {
     private Vehicle vehicle;
 
     @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private LocalDate endDate;
 
     private boolean isDeleted;
 
@@ -30,20 +32,20 @@ public class Reservation {
 		super();
 	}
 
-	public Reservation(Customer customer, Vehicle vehicle, Date startDate, Date endDate, boolean isDeleted) {
+	public Reservation(Customer customer, Vehicle vehicle, LocalDate startDate2, LocalDate endDate2, boolean isDeleted) {
 		super();
 		this.customer = customer;
 		this.vehicle = vehicle;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.startDate = startDate2;
+		this.endDate = endDate2;
 		this.isDeleted = isDeleted;
 	}
 
-	public Long getReservationId() {
+	public int getReservationId() {
 		return reservationId;
 	}
 
-	public void setReservationId(Long reservationId) {
+	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}
 
@@ -63,19 +65,19 @@ public class Reservation {
 		this.vehicle = vehicle;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -83,8 +85,8 @@ public class Reservation {
 		return isDeleted;
 	}
 
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
+	public void setDeleted(boolean date) {
+		this.isDeleted = date;
 	}
 
 	@Override

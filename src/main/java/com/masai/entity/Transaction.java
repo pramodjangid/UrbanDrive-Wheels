@@ -8,7 +8,7 @@ import java.util.Date;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transactionId;
+    private int transactionId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -38,11 +38,11 @@ public class Transaction {
 		this.isDeleted = isDeleted;
 	}
 
-	public Long getTransactionId() {
+	public int getTransactionId() {
 		return transactionId;
 	}
 
-	public void setTransactionId(Long transactionId) {
+	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
 
