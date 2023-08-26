@@ -14,7 +14,7 @@ public class Transaction {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 

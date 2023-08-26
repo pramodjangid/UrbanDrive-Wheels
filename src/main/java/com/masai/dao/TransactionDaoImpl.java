@@ -73,6 +73,38 @@ public class TransactionDaoImpl implements TransactionDao {
         }
     }
 
+	@Override
+	public void update(Transaction transaction) throws DataAccessException {
+		EntityManager em = EMUtils.getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.merge(transaction); 
+            em.getTransaction().commit();
+        } catch (PersistenceException pe) {
+            em.getTransaction().rollback();
+            throw new DataAccessException("Failed to update transaction");
+        } finally {
+            em.close();
+        }
+		
+	}
+
+	@Override
+	public List<Transaction> getAllTransactions() throws DataAccessException {
+	    EntityManager em = EMUtils.getEntityManager();
+
+	    try {
+	        return em.createQuery("SELECT t FROM Transaction t", Transaction.class)
+	                .getResultList();
+	    } catch (Exception e) {
+	        throw new DataAccessException("Error accessing data: " + e.getMessage());
+	    } finally {
+	        em.close();
+	    }
+	}
+
+
     
 }
 

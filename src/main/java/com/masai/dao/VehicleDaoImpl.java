@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.masai.entity.Vehicle;
 import com.masai.exceptions.DataAccessException;
+//import com.masai.presentationlayer.VehicleAlreadyExistsException;
 import com.masai.exceptions.CarNotFoundException;
 import com.masai.utility.EMUtils;
 
@@ -31,7 +32,7 @@ public class VehicleDaoImpl implements VehicleDao {
     }
 
     @Override
-    public Vehicle findById(int id) throws CarNotFoundException, DataAccessException {
+    public Vehicle findById(int id) throws DataAccessException, CarNotFoundException {
         EntityManager em = EMUtils.getEntityManager();
 
         try {
@@ -44,6 +45,7 @@ public class VehicleDaoImpl implements VehicleDao {
             em.close();
         }
     }
+
 
     @Override
     public List<Vehicle> findAll() throws DataAccessException {
@@ -130,7 +132,7 @@ public class VehicleDaoImpl implements VehicleDao {
                 existingVehicle.setYear(vehicle.getYear());
                 existingVehicle.setMileage(vehicle.getMileage());
                 existingVehicle.setAvailability(vehicle.isAvailability());
-                // ... update other fields as needed
+                existingVehicle.setRentalRate(vehicle.getRentalRate());
 
                 em.getTransaction().commit();
             } else {

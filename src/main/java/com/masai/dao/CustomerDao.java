@@ -10,5 +10,6 @@ public interface CustomerDao {
     Customer findById(int id) throws EntityNotFoundException, DataAccessException;
     Customer findByUsername(String username) throws EntityNotFoundException, DataAccessException;
     List<Customer> findAll() throws DataAccessException;
+	void delete(Customer customer) throws DataAccessException;
     
 }
