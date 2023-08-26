@@ -107,5 +107,34 @@ public class ReservationDaoImpl implements ReservationDao {
         }
     }
 
+	@Override
+	 public void update(Reservation reservation) throws DataAccessException {
+        EntityManager em = EMUtils.getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.merge(reservation); // Merge the updated reservation into the persistence context
+            em.getTransaction().commit();
+        } catch (PersistenceException pe) {
+            em.getTransaction().rollback();
+            throw new DataAccessException("Failed to update reservation");
+        } finally {
+            em.close();
+        }
+    }
+
+	@Override
+	public List<Reservation> getAllReservations() throws DataAccessException {
+	    EntityManager em = EMUtils.getEntityManager();
+
+	    try {
+	        return em.createQuery("SELECT r FROM Reservation r", Reservation.class)
+	                .getResultList();
+	    } finally {
+	        em.close();
+	    }
+	}
+
+
 }
 

@@ -14,5 +14,7 @@ public interface ReservationDao {
     List<Reservation> findByVehicle(Vehicle vehicle) throws DataAccessException;
 	void delete(Reservation reservation) throws DataAccessException;
 	List<Reservation> findPastReservations(Customer customer) throws DataAccessException;
+	void update(Reservation reservation) throws DataAccessException;
+	List<Reservation> getAllReservations() throws DataAccessException;;
     
 }

@@ -8,6 +8,7 @@ import com.masai.exceptions.EntityNotFoundException;
 import com.masai.utility.EMUtils;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceException;
 
@@ -76,6 +77,29 @@ public class CustomerDaoImpl implements CustomerDao {
             em.close();
         }
     }
+
+    @Override
+    public void delete(Customer customer) throws DataAccessException {
+        EntityManager em = EMUtils.getEntityManager();
+
+        try {
+            EntityTransaction transaction = em.getTransaction();
+            transaction.begin();
+
+            // Merge the customer object with the entity manager to attach it to the persistence context
+            Customer mergedCustomer = em.merge(customer);
+
+            // Remove the customer
+            em.remove(mergedCustomer);
+
+            transaction.commit();
+        } catch (Exception e) {
+            throw new DataAccessException("Error deleting customer: " + e.getMessage());
+        } finally {
+            em.close();
+        }
+    }
+
 
 	
 
