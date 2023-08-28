@@ -113,9 +113,15 @@ public class Vehicle {
 
 	@Override
 	public String toString() {
-		return "Vehicle [vehicleId=" + vehicleId + ", brand=" + brand + ", model=" + model + ", year=" + year
-				+ ", mileage=" + mileage + ", availability=" + availability + ", seatingCapacity=" + seatingCapacity
-				+ ", rentalRate=" + rentalRate + "]";
+	    return "Vehicle Information:\n" +
+	           "Vehicle ID: " + vehicleId + "\n" +
+	           "Brand: " + brand + "\n" +
+	           "Model: " + model + "\n" +
+	           "Year: " + year + "\n" +
+	           "Mileage: " + mileage + " miles\n" +
+	           "Availability: " + (availability ? "Available" : "Not Available") + "\n" +
+	           "Seating Capacity: " + seatingCapacity + " seats\n" +
+	           "Rental Rate: ₹" + rentalRate + " per day";
 	}
 
     

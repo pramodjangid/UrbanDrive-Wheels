@@ -1,7 +1,9 @@
 package com.masai.entity;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "reservations")
@@ -17,25 +19,29 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
+    
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL)
+    private Transaction transaction;
 
     @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private LocalDate startDate;
 
     @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private LocalDate endDate;
 
     private boolean isDeleted;
 
 	public Reservation() {
 		super();
 	}
+	
 
-	public Reservation(Customer customer, Vehicle vehicle, Date startDate, Date endDate, boolean isDeleted) {
+	public Reservation(Customer customer, Vehicle vehicle, LocalDate startDate2, LocalDate endDate2, boolean isDeleted) {
 		super();
 		this.customer = customer;
 		this.vehicle = vehicle;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.startDate = startDate2;
+		this.endDate = endDate2;
 		this.isDeleted = isDeleted;
 	}
 
@@ -63,19 +69,19 @@ public class Reservation {
 		this.vehicle = vehicle;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -86,12 +92,30 @@ public class Reservation {
 	public void setDeleted(boolean date) {
 		this.isDeleted = date;
 	}
+	
+	
+
+	public Transaction getTransaction() {
+		return transaction;
+	}
+
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Reservation [reservationId=" + reservationId + ", customer=" + customer + ", vehicle=" + vehicle
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", isDeleted=" + isDeleted + "]";
+	    return "Reservation Information:\n" +
+	           "Reservation ID: " + reservationId + "\n" +
+	           "Customer: " + customer.getFirstName() + " " + customer.getLastName() + " (ID: " + customer.getCustomerId() + ")\n" +
+	           "Vehicle: " + vehicle.getBrand() + " " + vehicle.getModel() + " (ID: " + vehicle.getVehicleId() + ")\n" +
+	           "Start Date: " + startDate + "\n" +
+	           "End Date: " + endDate + "\n" +
+	           "Status: " + (isDeleted ? "Cancelled" : "Active");
 	}
+
 
     
 }

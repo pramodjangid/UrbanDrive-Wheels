@@ -14,7 +14,7 @@ public class Transaction {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
@@ -88,8 +88,13 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionId=" + transactionId + ", customer=" + customer + ", reservation=" + reservation
-				+ ", transactionDate=" + transactionDate + ", amount=" + amount + ", isDeleted=" + isDeleted + "]";
+	    return "Transaction Information:\n" +
+	           "Transaction ID: " + transactionId + "\n" +
+	           "Customer: " + customer.getFirstName() + " " + customer.getLastName() + " (ID: " + customer.getCustomerId() + ")\n" +
+	           "Reservation ID: " + (reservation != null ? reservation.getReservationId() : "N/A") + "\n" +
+	           "Transaction Date: " + transactionDate + "\n" +
+	           "Amount: $" + amount + "\n" +
+	           "Status: " + (isDeleted ? "Cancelled" : "Active");
 	}
 
     

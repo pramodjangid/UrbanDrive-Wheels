@@ -113,9 +113,14 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", username=" + username + ", phoneNumber=" + phoneNumber + ", address=" + address
-				+ ", isDeleted=" + isDeleted + "]";
+	    return "Customer Information:\n" +
+	           "Customer ID: " + customerId + "\n" +
+	           "Name: " + firstName + " " + lastName + "\n" +
+	           "Email: " + email + "\n" +
+	           "Username: " + username + "\n" +
+	           "Phone Number: " + phoneNumber + "\n" +
+	           "Address: " + address + "\n" +
+	           "Status: " + (isDeleted ? "Deleted" : "Active");
 	}
 
 

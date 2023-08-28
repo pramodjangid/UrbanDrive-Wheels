@@ -1,5 +1,6 @@
 package com.masai.dao;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -93,19 +94,51 @@ public class ReservationDaoImpl implements ReservationDao {
     }
 
 	
-	@Override
+
+    @Override
     public List<Reservation> findPastReservations(Customer customer) throws DataAccessException {
         EntityManager em = EMUtils.getEntityManager();
 
         try {
+            LocalDate currentDate = LocalDate.now(); // Get the current date
             return em.createQuery("SELECT r FROM Reservation r WHERE r.customer = :customer AND r.endDate < :currentDate", Reservation.class)
                     .setParameter("customer", customer)
-                    .setParameter("currentDate", new Date())
+                    .setParameter("currentDate", currentDate)
                     .getResultList();
         } finally {
             em.close();
         }
     }
+
+
+	@Override
+	 public void update(Reservation reservation) throws DataAccessException {
+        EntityManager em = EMUtils.getEntityManager();
+
+        try {
+            em.getTransaction().begin();
+            em.merge(reservation); // Merge the updated reservation into the persistence context
+            em.getTransaction().commit();
+        } catch (PersistenceException pe) {
+            em.getTransaction().rollback();
+            throw new DataAccessException("Failed to update reservation");
+        } finally {
+            em.close();
+        }
+    }
+
+	@Override
+	public List<Reservation> getAllReservations() throws DataAccessException {
+	    EntityManager em = EMUtils.getEntityManager();
+
+	    try {
+	        return em.createQuery("SELECT r FROM Reservation r", Reservation.class)
+	                .getResultList();
+	    } finally {
+	        em.close();
+	    }
+	}
+
 
 }
 
