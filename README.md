@@ -48,6 +48,78 @@ The UrabanDrive Wheels Car Rental Backend System is designed to cater to two pri
 - Sort Vehicles by rental rate
 
 
+
+## Entity-Relationship (ER) Diagram for Car Rental Backend System
+
+### Entities:
+1. **Customer**
+2. **Vehicle**
+3. **Reservation**
+4. **Transaction**
+
+### Relationships:
+
+1. **Customer - Vehicle (One-to-Many):**
+   - A customer can have multiple reservations (one-to-many).
+   - Each reservation is associated with a vehicle.
+
+2. **Customer - Reservation (One-to-Many):**
+   - A customer can make multiple reservations (one-to-many).
+   - Each reservation belongs to a customer.
+
+3. **Reservation - Vehicle (Many-to-One):**
+   - Multiple reservations can be made for vehicles (many-to-one).
+   - Each reservation is associated with a vehicle.
+
+4. **Reservation - Transaction (One-to-One):**
+   - Each reservation can have one transaction (one-to-one).
+   - Each transaction is associated with a reservation.
+
+5. **Customer - Transaction (One-to-Many):**
+   - A customer can have multiple transactions (one-to-many).
+   - Each transaction is associated with a customer.
+
+### Entities Attributes:
+
+1. **Customer:**
+   - customerId (Primary Key)
+   - firstName
+   - lastName
+   - email
+   - username
+   - password
+   - phoneNumber
+   - address
+   - isDeleted
+
+2. **Vehicle:**
+   - vehicleId (Primary Key)
+   - brand
+   - model
+   - year
+   - mileage
+   - availability
+   - seatingCapacity
+   - rentalRate
+
+3. **Reservation:**
+   - reservationId (Primary Key)
+   - customer (Foreign Key: customerId)
+   - vehicle (Foreign Key: vehicleId)
+   - startDate
+   - endDate
+   - isDeleted
+
+4. **Transaction:**
+   - transactionId (Primary Key)
+   - customer (Foreign Key: customerId)
+   - reservation (Foreign Key: reservationId)
+   - transactionDate
+   - amount
+   - isDeleted
+
+
+
 ## Tech Stack
 
 The UrabanDrive Wheels Car Rental Backend System is developed using Java, a versatile programming language known for its performance and flexibility.
