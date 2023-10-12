@@ -1,10 +1,10 @@
 # statuesque-animal-5788
 
-# UrabanDrive Wheels Car Rental Backend System
+# UrbanDrive Wheels Car Rental Backend System
 
 ## Overview
 
-Welcome to the UrabanDrive Wheels Car Rental Backend System project documentation! This project offers a comprehensive console-based backend system for managing car rentals. Developed by Pramod Kumar Jangid during the Construct Week at Masai School, this project provides efficient tools for administrators, and customers to handle various car rental tasks.
+Welcome to the UrbanDrive Wheels Car Rental Backend System project documentation! This project offers a comprehensive console-based backend system for managing car rentals. Developed by Pramod Kumar Jangid during the Construct Week at Masai School, this project provides efficient tools for administrators, and customers to handle various car rental tasks.
 
 ## Author
 
@@ -13,11 +13,11 @@ Pramod Kumar Jangid
 
 ## Introduction
 
-The UrabanDrive Wheels Car Rental Backend System project is built using Java to provide users in the car rental industry with a streamlined solution for data management and processing. This documentation will guide you through the features, functionalities, and usage of the system.
+The UrbanDrive Wheels Car Rental Backend System project is built using Java to provide users in the car rental industry with a streamlined solution for data management and processing. This documentation will guide you through the features, functionalities, and usage of the system.
 
 ### Getting Started
 
-The UrabanDrive Wheels Car Rental Backend System is designed to cater to two primary roles:
+The UrbanDrive Wheels Car Rental Backend System is designed to cater to two primary roles:
 
 1. Administrator
 2. Customer
