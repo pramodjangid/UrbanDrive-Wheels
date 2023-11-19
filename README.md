@@ -1,4 +1,4 @@
-# statuesque-animal-5788
+   # statuesque-animal-5788
 
 # UrbanDrive Wheels Car Rental Backend System
 
@@ -78,6 +78,17 @@ The UrbanDrive Wheels Car Rental Backend System is designed to cater to two prim
 5. **Customer - Transaction (One-to-Many):**
    - A customer can have multiple transactions (one-to-many).
    - Each transaction is associated with a customer.
+
+
+
+
+     
+![ER Diagram Visual Representation](https://github.com/pramodjangid/statuesque-animal-5788/blob/main/ER%20Diagram.png)
+
+
+
+
+
 
 ### Entities Attributes:
 
