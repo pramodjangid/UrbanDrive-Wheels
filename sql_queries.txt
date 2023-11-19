@@ -1,0 +1,104 @@
+SQL Queries :
+
+
+1. customer_queries
+
+
+-- Save Customer
+INSERT INTO Customer (/* Column names */) VALUES (/* Values */);
+
+-- Find Customer by ID
+SELECT * FROM Customer WHERE id = ?;
+
+-- Find Customer by Username
+SELECT * FROM Customer WHERE username = ?;
+
+-- Find All Customers
+SELECT * FROM Customer;
+
+-- Delete Customer
+DELETE FROM Customer WHERE id = ?;
+
+
+
+2. reservation_queries
+
+
+-- Save Reservation
+INSERT INTO Reservation (/* Column names */) VALUES (/* Values */);
+
+-- Find Reservation by ID
+SELECT * FROM Reservation WHERE id = ?;
+
+-- Find Reservations by Customer
+SELECT * FROM Reservation WHERE customer_id = ?;
+
+-- Find Reservations by Vehicle
+SELECT * FROM Reservation WHERE vehicle_id = ?;
+
+-- Soft Delete Reservation
+UPDATE Reservation SET is_deleted = true WHERE id = ?;
+
+-- Find Past Reservations for a Customer
+SELECT * FROM Reservation WHERE customer_id = ? AND end_date < ?;
+
+-- Update Reservation
+UPDATE Reservation SET /* Updated values */ WHERE id = ?;
+
+-- Get All Reservations
+SELECT * FROM Reservation;
+
+
+
+3. transaction_queries
+
+
+-- Save Transaction
+INSERT INTO Transaction (/* Column names */) VALUES (/* Values */);
+
+-- Find Transaction by ID
+SELECT * FROM Transaction WHERE id = ?;
+
+-- Find Transactions by Customer
+SELECT * FROM Transaction WHERE customer_id = ?;
+
+-- Find Transactions by Vehicle
+SELECT * FROM Transaction WHERE vehicle_id = ?;
+
+-- Update Transaction
+UPDATE Transaction SET /* Updated values */ WHERE id = ?;
+
+-- Get All Transactions
+SELECT * FROM Transaction;
+
+
+
+4. vehicle_queries
+
+
+-- Save Vehicle
+INSERT INTO Vehicle (/* Column names */) VALUES (/* Values */);
+
+-- Find Vehicle by ID
+SELECT * FROM Vehicle WHERE vehicle_id = ?;
+
+-- Find All Vehicles
+SELECT * FROM Vehicle;
+
+-- Find Vehicles by Availability
+SELECT * FROM Vehicle WHERE availability = ?;
+
+-- Find Vehicles by Brand and Model
+SELECT * FROM Vehicle WHERE brand = ? AND model = ?;
+
+-- Find Vehicles by Availability, Year, and Seating Capacity
+SELECT * FROM Vehicle WHERE availability = ? AND year >= ? AND seating_capacity >= ?;
+
+-- Delete Vehicle
+DELETE FROM Vehicle WHERE vehicle_id = ?;
+
+-- Update Vehicle
+UPDATE Vehicle SET brand = ?, model = ?, year = ?, mileage = ?, availability = ?, rental_rate = ? WHERE vehicle_id = ?;
+
+
+
